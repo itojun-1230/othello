@@ -45,17 +45,17 @@ function ElemntEvent(e) {
 
 
                 for (let i = 0; i < 8; i++)for (let l = 0; l < 8; l++) {
-                    let element = document.getElementsByClassName("Tile")[i].children[l].children[0];
+                    const element = document.getElementsByClassName("Tile")[i].children[l].children[0];
                     if (element.style.pointerEvents == 'auto') element.style.pointerEvents = 'none';
                 }
-                let x = parseInt(e.parentNode.getAttribute("x"))
-                let y = parseInt(e.parentNode.parentNode.getAttribute("y"))
+                const x = parseInt(e.parentNode.getAttribute("x"))
+                const y = parseInt(e.parentNode.parentNode.getAttribute("y"))
                 socket.emit('socket', 'place-stone', MyColor, x + 1, y + 1, Room);
             }
         } else if (e.className == "janken") {
             e._click = function () {
                 for (let i = 0; i < 3; i++) {
-                    let janken = document.getElementsByClassName("janken")[i];
+                    const janken = document.getElementsByClassName("janken")[i];
                     janken.style.pointerEvents = 'none';
                 }
                 e.style.backgroundColor = "#004cff";
@@ -138,7 +138,7 @@ function Stone(stone) {          //石の表示処理全般
 
     for (let i = 0; i < stone.length; i++) {
         for (let l = 0; l < stone[i].length; l++) {
-            let element = document.getElementsByClassName("Tile")[i].children[l].children[0];
+            const element = document.getElementsByClassName("Tile")[i].children[l].children[0];
             if (getComputedStyle(element).getPropertyValue("opacity") == 0 && (stone[i][l] == 1 || stone[i][l] == 2) && flag == 2) {
                 if ((stone[i][l] == 1 && element.children[1].style.backgroundColor == 'rgb(0, 0, 0)') || (stone[i][l] == 2 && element.children[1].style.backgroundColor == 'rgb(255, 255, 255)')) element.insertBefore(element.children[1], element.children[0]);
                 anime({
@@ -235,10 +235,10 @@ socket.on('socket', (...args) => {      //サーバからの入力
     } else if (args[0] == "JoinuSccess") {
         Room = args[1];
     } else if (args[0] == 'janken-result') {
-        let gu = document.getElementsByClassName("janken")[0].src;
-        let choki = document.getElementsByClassName("janken")[1].src;
-        let pa = document.getElementsByClassName("janken")[2].src;
-        let element = document.getElementsByClassName("janken-result");
+        const gu = document.getElementsByClassName("janken")[0].src;
+        const choki = document.getElementsByClassName("janken")[1].src;
+        const pa = document.getElementsByClassName("janken")[2].src;
+        const element = document.getElementsByClassName("janken-result");
         if (args[1] == -1) {      //あいこ
             element[0].src = element[1].src;
             element[2].textContent = "あいこ";
@@ -303,8 +303,8 @@ window.onresize = function () {       //リサイズ時実行
 }
 
 function Resize(duration) {
-    var target = document.getElementById('main-window');
-    var scale = window.innerWidth * 0.7 / 1200;               //ウィンドウサイズの70%のサイズ
+    const target = document.getElementById('main-window');
+    const scale = window.innerWidth * 0.7 / 1200;               //ウィンドウサイズの70%のサイズ
     target.animate(
         {
             transform:
