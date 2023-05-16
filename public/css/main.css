@@ -1,0 +1,132 @@
+#main-window{
+	overflow: hidden;
+    background-color: aliceblue;
+    border-radius: 10px;
+    border: 2.5px solid #1b1d1d;
+    width: 1200px;
+    height: 850px;
+    margin-left:0px;
+    margin-top:0px;
+    transform-origin: top left;
+}
+
+#start-text{
+    text-align: center;
+    opacity:0;
+    transform-origin: top center;
+    pointer-events: none;
+    color:rgb(245, 196, 33);
+     font-size: 30px;
+     width: 900px;
+     left: -200px;
+    -webkit-text-stroke: 0.4px rgb(39, 39, 39);
+}
+.select-room{
+    transform-origin: 50% 0;
+    width: 400px;
+    height: 250px;
+    background: 
+    repeating-linear-gradient(
+        #d4a236 5%, 
+        #ffb006 20%
+        );
+    border-radius: 10px;
+    font-size: 30px;
+    font-family: 'メイリオ';
+    font-weight: bold;
+}
+#NameBox{
+    width: 400px;
+    height: 70px;
+    font-size: 40px;
+    text-align: center;
+    border-radius: 20px;
+}
+#exit{
+    background-color: red;
+    width: 130px;
+    height: 40px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 20px;
+    border: ridge 10px #a70f0f;
+}
+.decora{
+    background: radial-gradient(
+        circle 30px,
+    rgb(204, 110, 2), rgb(110, 63, 2) 50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+#board-window{
+    background: 
+    repeating-linear-gradient(
+        #bd8b21 5%, 
+        #d19719 30%
+        );
+    opacity: 1;
+    width: 90%;
+    height: 90%;
+}
+.tile{
+    position: relative;
+    background-color: #4c8744;
+    border: 1px solid #1b1d1d;
+    width: 80px;
+    height: 80px;
+    pointer-events: none;
+}
+.Stone{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.StoneDiv{
+    transform-style: preserve-3d;
+    transform-origin:0%,50%;
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+}
+.CanPlace{
+    background: radial-gradient(
+        circle 30px,
+    rgb(1, 255, 149), rgb(7, 138, 29) 50%);
+    left: 25px;
+    top: 25px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    opacity: 0;
+}
+#janken-board{
+    border: ridge 10px #cb9c10;
+    background-color: #152039;
+    display:flex;
+}
+.janken{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    pointer-events: auto;
+}
+.janken-result{
+    width: 250px;
+    height: 250px;
+    transform-origin:50%,50%;
+    opacity: 0;
+    text-align: center;
+    font-size: 80px;
+    color: #fff;
+    font-weight: bold;
+    -webkit-text-stroke:5px #152039;
+}
+
+*{
+    position: absolute;
+    user-select:none;
+}

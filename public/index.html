@@ -1,0 +1,557 @@
+<!DOCTYPE html>	
+<html>
+    <head>
+        <title>オセロゲーム</title>
+        <link rel="stylesheet" href="css/main.css">
+      <script src="/socket.io/socket.io.js"></script>
+
+    </head>
+    <body>
+        <div id="main-window">
+            <div id = "start-window" onclick="Click(this)" style="opacity: 1;width: 100%;height: 100%;">
+                <div onclick ="" id="title" left = 100 top = 250 style="pointer-events: none;width: 85%;" >
+                    <svg class = "svg" xmlns="http://www.w3.org/2000/svg" width="983.961" height="140.59" viewBox="0 0 983.961 140.59">
+                        <g class="lines" fill="none" stroke="currentColor" stroke-width="1">
+                            <path d="M 127.501 50.49 L 95.711 50.49 Q 96.561 62.22 97.496 73.865 Q 98.431 85.51 99.281 97.24 Q 99.791 104.55 100.301 111.69 Q 100.811 118.83 100.811 126.14 A 15.892 15.892 0 0 1 100.03 131.221 A 13.442 13.442 0 0 1 96.731 136.51 A 13.764 13.764 0 0 1 88.199 140.485 A 18.785 18.785 0 0 1 86.191 140.59 A 20.148 20.148 0 0 1 82.651 140.253 Q 79.901 139.761 76.671 138.55 Q 71.231 136.51 66.131 133.62 Q 62.443 131.53 59.821 129.618 A 36.423 36.423 0 0 1 57.971 128.18 A 5.462 5.462 0 0 1 57.501 127.65 Q 56.951 126.934 56.951 126.31 A 0.136 0.136 0 0 1 57.034 126.183 Q 57.119 126.14 57.291 126.14 Q 57.429 126.002 57.791 125.976 A 2.522 2.522 0 0 1 57.971 125.97 A 0.596 0.596 0 0 1 58.073 125.984 Q 58.39 126.048 59.501 126.395 L 62.221 127.245 A 53.764 53.764 0 0 1 62.695 127.395 Q 63.411 127.626 63.744 127.762 A 2.575 2.575 0 0 1 63.921 127.84 Q 67.321 128.86 70.891 129.625 A 33.884 33.884 0 0 0 76.58 130.363 A 30.673 30.673 0 0 0 77.861 130.39 A 8.441 8.441 0 0 0 80.834 129.884 A 7.501 7.501 0 0 0 83.726 127.925 Q 86.021 125.46 86.021 122.06 Q 86.021 115.6 85.681 109.14 Q 85.341 102.68 84.831 96.22 L 81.431 50.49 L 16.831 50.49 L 17.001 43.35 L 80.411 43.35 L 77.861 17.34 L 93.501 17.34 L 95.371 43.35 L 120.361 43.35 Q 120.191 42.67 120.191 41.48 A 9.778 9.778 0 0 1 122.31 35.407 A 12.782 12.782 0 0 1 122.911 34.68 A 9.716 9.716 0 0 1 125.289 32.699 A 7.994 7.994 0 0 1 129.371 31.62 A 8.376 8.376 0 0 1 135.154 33.921 A 11.591 11.591 0 0 1 135.916 34.68 A 11.208 11.208 0 0 1 137.858 37.54 A 9.272 9.272 0 0 1 138.721 41.48 A 8.465 8.465 0 0 1 138.207 44.496 Q 137.417 46.584 135.414 47.966 A 9.631 9.631 0 0 1 135.066 48.195 Q 131.411 50.49 127.501 50.49 Z " vector-effect="non-scaling-stroke"/>
+                            <path d="M 61.541 58.31 L 76.501 64.77 A 81.541 81.541 0 0 1 72.144 73.451 A 109.567 109.567 0 0 1 67.066 81.43 Q 61.031 90.1 53.466 98.26 A 136.634 136.634 0 0 1 38.812 111.963 A 125.494 125.494 0 0 1 37.656 112.88 A 84.027 84.027 0 0 1 29.474 118.575 A 63.266 63.266 0 0 1 21.421 122.74 Q 18.701 123.93 15.896 124.695 Q 13.091 125.46 10.201 125.46 A 11.398 11.398 0 0 1 3.687 123.403 A 14.142 14.142 0 0 1 3.231 123.08 A 7.866 7.866 0 0 1 0.859 120.376 Q 0.001 118.724 0.001 116.62 A 8.995 8.995 0 0 1 2.713 110.081 A 11.389 11.389 0 0 1 2.891 109.905 A 10.235 10.235 0 0 1 5.761 107.903 A 8.938 8.938 0 0 1 9.521 107.1 A 8.212 8.212 0 0 1 15.646 109.701 A 10.554 10.554 0 0 1 16.066 110.16 A 11.093 11.093 0 0 1 18.042 113.39 A 9.794 9.794 0 0 1 18.701 116.96 A 10.873 10.873 0 0 1 18.577 118.548 Q 18.45 119.41 18.191 120.36 A 66.828 66.828 0 0 0 25.733 114.171 A 86.249 86.249 0 0 0 31.451 108.205 A 147.059 147.059 0 0 0 43.427 92.411 A 160.339 160.339 0 0 0 43.606 92.14 Q 49.301 83.47 53.891 74.715 A 203.701 203.701 0 0 0 58.098 66.236 A 155.01 155.01 0 0 0 61.541 58.31 Z " vector-effect="non-scaling-stroke"/>
+                            <path d="M 212.331 93.33 L 212.331 63.24 L 178.671 68 L 177.141 59.33 L 212.331 55.59 L 212.331 21.93 L 228.481 21.93 Q 227.631 37.74 227.461 53.38 Q 245.141 51.17 262.821 48.875 Q 280.501 46.58 298.181 44.37 Q 298.181 54.74 294.611 64.175 Q 291.041 73.61 284.241 81.005 A 48.603 48.603 0 0 1 267.826 92.617 A 55.252 55.252 0 0 1 267.751 92.65 A 53.559 53.559 0 0 1 265.351 93.606 Q 264.078 94.08 262.64 94.555 A 90.628 90.628 0 0 1 262.226 94.69 A 23.39 23.39 0 0 1 259.633 95.378 Q 258.294 95.648 257.083 95.698 A 13.243 13.243 0 0 1 256.531 95.71 A 7.521 7.521 0 0 1 251.078 93.486 A 9.163 9.163 0 0 1 251.006 93.415 A 7.523 7.523 0 0 1 248.711 87.991 A 9.029 9.029 0 0 1 248.711 87.89 A 8.356 8.356 0 0 1 250.83 82.31 A 10.706 10.706 0 0 1 251.006 82.11 A 7.984 7.984 0 0 1 253.193 80.367 A 7.012 7.012 0 0 1 256.531 79.56 A 7.098 7.098 0 0 1 261.765 81.801 A 9.476 9.476 0 0 1 262.056 82.11 A 9.029 9.029 0 0 1 263.81 84.915 A 8.225 8.225 0 0 1 264.351 87.89 A 6.16 6.16 0 0 1 264.284 88.773 A 7.647 7.647 0 0 1 264.181 89.335 Q 264.011 90.1 263.841 90.78 Q 272.511 84.32 276.081 74.375 Q 279.651 64.43 279.821 54.06 L 226.951 61.37 L 226.951 95.71 A 78.546 78.546 0 0 0 227.261 102.906 Q 227.585 106.417 228.246 109.435 A 39 39 0 0 0 229.161 112.88 Q 231.371 119.85 237.406 123.42 Q 243.441 126.99 254.491 126.99 A 149.994 149.994 0 0 0 268.53 126.307 A 176.33 176.33 0 0 0 275.231 125.545 A 108.858 108.858 0 0 0 289.467 122.714 A 93.394 93.394 0 0 0 295.461 120.87 Q 293.081 119.68 291.381 117.47 Q 289.681 115.26 289.681 112.54 A 9.539 9.539 0 0 1 291.715 106.663 A 12.688 12.688 0 0 1 292.486 105.74 A 10.122 10.122 0 0 1 294.913 103.762 A 8.156 8.156 0 0 1 299.031 102.68 A 8.212 8.212 0 0 1 305.156 105.281 A 10.554 10.554 0 0 1 305.576 105.74 Q 308.211 108.8 308.211 112.54 A 7.505 7.505 0 0 1 307.005 116.546 Q 305.925 118.288 303.876 119.935 A 35.969 35.969 0 0 1 299.441 122.954 Q 296.459 124.691 292.741 126.225 Q 285.941 129.03 278.461 131.07 A 183.321 183.321 0 0 1 271.299 132.876 A 134.401 134.401 0 0 1 264.776 134.215 A 115.711 115.711 0 0 1 261.859 134.698 Q 257.763 135.32 255.341 135.32 Q 240.041 135.32 230.521 131.325 Q 221.001 127.33 216.666 118.15 Q 213.558 111.57 212.678 101.67 A 94.393 94.393 0 0 1 212.331 93.33 Z " vector-effect="non-scaling-stroke"/>
+                            <path d="M 360.911 33.15 L 465.291 33.15 Q 465.291 61.37 464.271 89.42 Q 464.101 94.35 463.931 99.45 Q 463.761 104.55 462.061 109.48 A 26.293 26.293 0 0 1 458.327 116.698 A 21.372 21.372 0 0 1 450.161 123.335 Q 441.661 127.33 431.971 127.33 L 361.761 127.33 L 360.911 33.15 Z " vector-effect="non-scaling-stroke"/>
+                            <path d="M 636.141 54.23 L 606.051 54.23 Q 605.541 69.19 602.311 83.3 Q 599.081 97.41 591.686 109.31 Q 584.291 121.21 570.861 129.88 A 38.345 38.345 0 0 1 567.246 132.046 Q 565.339 133.059 563.114 134.012 A 68.521 68.521 0 0 1 561.596 134.64 Q 556.071 136.85 550.376 138.295 A 50.443 50.443 0 0 1 545.078 139.356 A 36.692 36.692 0 0 1 539.921 139.74 A 9.636 9.636 0 0 1 533.733 137.501 A 12.211 12.211 0 0 1 533.461 137.275 Q 530.571 134.81 530.571 131.07 A 9.539 9.539 0 0 1 532.605 125.193 A 12.688 12.688 0 0 1 533.376 124.27 A 10.122 10.122 0 0 1 535.803 122.292 A 8.156 8.156 0 0 1 539.921 121.21 A 8.212 8.212 0 0 1 546.046 123.811 A 10.554 10.554 0 0 1 546.466 124.27 Q 549.101 127.33 549.101 131.07 Q 549.101 133.28 547.741 135.15 Q 560.151 129.71 568.226 121.04 Q 576.301 112.37 580.976 101.49 Q 585.651 90.61 587.521 78.455 Q 589.391 66.3 589.391 53.89 L 550.631 53.89 Q 546.211 62.22 539.921 69.87 Q 533.631 77.52 524.961 81.77 A 9.786 9.786 0 0 1 524.236 82.099 Q 523.499 82.395 522.95 82.441 A 2.356 2.356 0 0 1 522.751 82.45 A 1.56 1.56 0 0 1 522.44 82.422 Q 521.962 82.324 521.908 81.887 A 0.952 0.952 0 0 1 521.901 81.77 Q 521.901 80.792 522.839 79.5 A 9.148 9.148 0 0 1 522.921 79.39 Q 526.321 74.63 529.211 69.785 Q 532.101 64.94 534.311 59.5 Q 538.221 49.47 541.281 39.185 Q 544.341 28.9 545.701 18.19 L 562.701 20.57 Q 561.171 27.37 558.706 33.83 Q 556.241 40.29 553.181 46.75 L 627.811 46.58 A 0.952 0.952 0 0 1 627.607 46.262 Q 627.489 45.974 627.473 45.533 A 3.929 3.929 0 0 1 627.471 45.39 A 9.778 9.778 0 0 1 629.59 39.317 A 12.782 12.782 0 0 1 630.191 38.59 A 9.716 9.716 0 0 1 632.569 36.609 A 7.994 7.994 0 0 1 636.651 35.53 A 8.463 8.463 0 0 1 642.936 38.219 A 11.092 11.092 0 0 1 643.281 38.59 A 11.146 11.146 0 0 1 645.233 41.608 A 9.518 9.518 0 0 1 646.001 45.39 Q 646.001 49.64 643.026 51.935 Q 640.051 54.23 636.141 54.23 Z " vector-effect="non-scaling-stroke"/>
+                            <path d="M 650.038 18.016 A 1.224 1.224 0 0 0 650.081 17.68 Q 650.081 16.445 649.273 14.581 A 21.372 21.372 0 0 0 648.551 13.09 A 36.481 36.481 0 0 0 647.181 10.728 A 44.94 44.94 0 0 0 644.726 7.225 A 43.189 43.189 0 0 0 642.701 4.785 A 33.754 33.754 0 0 0 640.051 2.125 A 16.121 16.121 0 0 0 639.493 1.648 Q 638.249 0.636 637.205 0.245 A 3.531 3.531 0 0 0 635.971 0 A 1.094 1.094 0 0 0 635.818 0.011 Q 634.967 0.132 633.336 1.53 Q 631.551 3.06 630.106 4.93 A 19.862 19.862 0 0 0 629.904 5.196 Q 628.996 6.413 628.751 7.161 A 1.599 1.599 0 0 0 628.661 7.65 A 0.183 0.183 0 0 0 628.672 7.711 Q 628.731 7.876 629.086 8.16 A 4.792 4.792 0 0 0 629.192 8.243 Q 629.533 8.5 629.681 8.5 Q 630.021 8.67 630.446 8.67 A 1.965 1.965 0 0 1 630.517 8.671 Q 630.885 8.685 631.041 8.84 Q 632.061 9.18 633.166 9.775 Q 633.753 10.091 634.268 10.383 A 40.35 40.35 0 0 1 635.121 10.88 Q 635.801 11.22 637.926 12.41 Q 640.051 13.6 642.516 15.045 A 143.023 143.023 0 0 0 643.199 15.443 Q 644.208 16.027 645.127 16.536 A 83.176 83.176 0 0 0 646.936 17.51 Q 648.891 18.53 649.231 18.53 A 1.252 1.252 0 0 0 649.545 18.494 Q 649.93 18.394 650.038 18.016 Z " vector-effect="non-scaling-stroke"/>
+                            <path d="M 632.028 26.939 A 2.468 2.468 0 0 0 632.061 26.52 A 4.713 4.713 0 0 0 632.043 26.121 Q 631.95 25.022 631.358 23.549 A 19.572 19.572 0 0 0 630.701 22.1 A 31.386 31.386 0 0 0 629.364 19.704 A 39.085 39.085 0 0 0 627.216 16.575 A 37.92 37.92 0 0 0 625.34 14.283 A 29.071 29.071 0 0 0 622.881 11.815 Q 621.568 10.654 620.376 10.183 A 4.274 4.274 0 0 0 618.801 9.86 Q 618.248 9.86 616.966 10.982 A 20.488 20.488 0 0 0 616.336 11.56 Q 614.551 13.26 612.936 15.215 A 24.513 24.513 0 0 0 612.472 15.792 Q 611.63 16.878 611.403 17.476 A 1.093 1.093 0 0 0 611.321 17.85 A 0.438 0.438 0 0 0 611.331 17.945 Q 611.376 18.15 611.62 18.321 A 1.643 1.643 0 0 0 611.831 18.445 A 8.451 8.451 0 0 1 611.847 18.453 Q 612.217 18.639 612.404 18.78 A 0.997 0.997 0 0 1 612.511 18.87 Q 617.271 21.08 621.861 23.375 Q 626.451 25.67 631.211 27.71 Q 631.895 27.71 632.028 26.939 Z" vector-effect="non-scaling-stroke"/>
+                            <path d="M 685.781 81.43 L 684.931 69.36 Q 699.551 68.51 713.576 67.83 Q 727.601 67.15 742.561 67.15 Q 750.551 67.15 758.541 67.405 Q 766.531 67.66 774.521 68.51 A 316.676 316.676 0 0 1 780.884 69.171 Q 783.371 69.457 785.584 69.759 A 154.641 154.641 0 0 1 789.736 70.38 A 77.372 77.372 0 0 0 797.623 71.279 A 65.248 65.248 0 0 0 801.551 71.4 Q 803.1 71.4 805.926 71.106 A 123.789 123.789 0 0 0 807.841 70.89 A 107.947 107.947 0 0 0 811.364 70.411 Q 813.504 70.083 815.321 69.7 A 14.927 14.927 0 0 1 814.067 68.829 A 11.155 11.155 0 0 1 813.026 67.915 A 3.114 3.114 0 0 1 812.091 65.662 A 3.925 3.925 0 0 1 812.091 65.62 A 4.593 4.593 0 0 1 813.38 62.422 A 6.69 6.69 0 0 1 814.046 61.795 Q 816.001 60.18 818.551 60.18 A 7.363 7.363 0 0 1 820.316 60.38 A 4.984 4.984 0 0 1 822.801 61.795 Q 824.331 63.41 824.331 65.62 Q 824.331 67.83 822.801 69.53 Q 821.271 71.23 819.401 72.42 A 39.431 39.431 0 0 1 812.715 75.776 A 50.997 50.997 0 0 1 807.416 77.52 Q 800.531 79.39 793.306 80.07 Q 786.081 80.75 779.621 80.75 Q 767.211 80.75 754.971 80.07 Q 742.731 79.39 730.321 79.39 Q 721.821 79.39 713.066 79.645 Q 704.311 79.9 695.811 80.58 Q 693.601 80.75 691.306 80.92 A 131.55 131.55 0 0 0 689.453 81.071 Q 687.799 81.218 685.781 81.43 Z " vector-effect="non-scaling-stroke"/>
+                            <path d="M 868.361 126.99 L 865.981 116.11 A 40.924 40.924 0 0 0 869.363 114.414 Q 870.974 113.504 872.263 112.542 A 19.426 19.426 0 0 0 873.716 111.35 Q 876.014 109.261 878.255 105.916 A 47.178 47.178 0 0 0 879.241 104.38 Q 885.191 94.69 889.271 83.895 Q 893.351 73.1 896.921 62.22 Q 900.321 52.36 903.296 42.33 Q 906.271 32.3 908.991 22.27 L 926.841 26.69 Q 924.121 36.38 919.871 45.475 Q 915.621 54.57 911.201 63.58 Q 905.081 76.16 898.366 88.57 Q 891.651 100.98 884.001 112.71 Q 896.241 112.2 908.566 111.775 Q 920.891 111.35 933.131 109.48 Q 939.931 108.46 946.816 107.015 Q 953.701 105.57 960.161 103.02 L 960.501 102.85 L 960.671 102.85 Q 961.885 102.85 962.135 103.813 A 2.254 2.254 0 0 1 962.201 104.38 A 0.811 0.811 0 0 1 961.962 104.958 A 1.064 1.064 0 0 1 961.946 104.975 A 2.268 2.268 0 0 0 961.522 105.567 A 2.737 2.737 0 0 0 961.521 105.57 Q 956.081 109.65 951.321 112.54 Q 946.561 115.43 941.291 117.3 Q 936.062 119.155 929.327 120.509 A 119.832 119.832 0 0 1 929.221 120.53 Q 914.261 123.42 898.961 124.865 Q 883.661 126.31 868.361 126.99 Z " vector-effect="non-scaling-stroke"/>
+                            <path d="M 940.781 73.44 L 952.681 63.41 A 113.736 113.736 0 0 1 958.827 70.095 A 146.19 146.19 0 0 1 963.646 76.075 Q 969.171 83.3 973.761 91.46 Q 978.351 99.62 981.156 108.035 A 55.515 55.515 0 0 1 983.498 117.818 A 46.061 46.061 0 0 1 983.961 124.27 A 11.391 11.391 0 0 1 983.302 128.201 A 10.212 10.212 0 0 1 981.326 131.495 A 8.674 8.674 0 0 1 975.478 134.411 A 12.095 12.095 0 0 1 974.271 134.47 Q 970.701 134.47 968.661 132.005 Q 966.621 129.54 966.621 126.14 A 7.29 7.29 0 0 1 968.122 121.722 A 9.824 9.824 0 0 1 968.831 120.87 A 8.063 8.063 0 0 1 970.7 119.351 A 6.354 6.354 0 0 1 973.931 118.49 Q 975.291 118.49 976.481 118.915 Q 977.671 119.34 978.861 119.85 A 45.511 45.511 0 0 0 975.839 112.884 A 59.716 59.716 0 0 0 972.486 107.355 A 120.588 120.588 0 0 0 964.323 96.718 A 135.261 135.261 0 0 0 962.626 94.775 A 200.238 200.238 0 0 0 951.428 83.151 A 205.694 205.694 0 0 0 951.406 83.13 Q 945.711 77.69 940.781 73.44 Z " vector-effect="non-scaling-stroke"/>
+                        </g>
+                        <g class = "othellotitle" style="stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter;stroke-miterlimit: 4; opacity: 0;">
+                            <path transform="matrix(1.05 0 0 1.05 411.1 77.53)" style="stroke: rgb(4, 12, 5); fill: rgb(107,55,14); fill-rule: nonzero;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M -32.519 -32.519 L 32.519 -32.519 L 32.519 32.519 L -32.519 32.519 z" stroke-linecap="round" />
+                            <path transform="matrix(3.1 0 0 3.06 394.28 60.4)" style="stroke: rgb(14, 29, 29); fill: rgb(76,135,68); fill-rule: nonzero;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M -5.42888 -2.99011 C -5.42888 -4.337 -4.35023 -5.4288799999999995 -3.0196400000000003 -5.4288799999999995 L 3.0196399999999994 -5.4288799999999995 L 3.0196399999999994 -5.4288799999999995 C 4.35023 -5.4288799999999995 5.4288799999999995 -4.337009999999999 5.4288799999999995 -2.9901099999999996 L 5.4288799999999995 2.99012 L 5.4288799999999995 2.99012 C 5.4288799999999995 4.33701 4.35023 5.42889 3.0196399999999994 5.42889 L -3.0196400000000003 5.42889 L -3.0196400000000003 5.42889 C -4.35023 5.42889 -5.42888 4.33702 -5.42888 2.99012 z" stroke-linecap="round" />
+                            <path transform="matrix(3.1 0 0 3.11 394.28 94.41)" style="stroke: rgb(8, 15, 15); fill: rgb(76,135,68); fill-rule: nonzero;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M -5.42888 -3.02932 C -5.42888 -4.354559999999999 -4.35023 -5.4288799999999995 -3.0196400000000003 -5.4288799999999995 L 3.0196399999999994 -5.4288799999999995 L 3.0196399999999994 -5.4288799999999995 C 4.35023 -5.4288799999999995 5.4288799999999995 -4.354559999999999 5.4288799999999995 -3.0293199999999993 L 5.4288799999999995 3.0293300000000007 L 5.4288799999999995 3.0293300000000007 C 5.4288799999999995 4.354570000000001 4.35023 5.428890000000001 3.0196399999999994 5.428890000000001 L -3.0196400000000003 5.428890000000001 L -3.0196400000000003 5.428890000000001 C -4.35023 5.428890000000001 -5.42888 4.354570000000001 -5.42888 3.0293300000000007 z" stroke-linecap="round" />
+                            <path transform="matrix(3.03 0 0 3.11 428.34 94.41)" style="stroke: rgb(4, 5, 5); fill: rgb(76,135,68); fill-rule: nonzero;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M -5.42888 -3.02932 C -5.42888 -4.354559999999999 -4.326630000000001 -5.4288799999999995 -2.9669400000000006 -5.4288799999999995 L 2.9669399999999997 -5.4288799999999995 L 2.9669399999999997 -5.4288799999999995 C 4.32663 -5.4288799999999995 5.4288799999999995 -4.354559999999999 5.4288799999999995 -3.0293199999999993 L 5.4288799999999995 3.0293300000000007 L 5.4288799999999995 3.0293300000000007 C 5.4288799999999995 4.354570000000001 4.32663 5.428890000000001 2.9669399999999997 5.428890000000001 L -2.9669400000000006 5.428890000000001 L -2.9669400000000006 5.428890000000001 C -4.326630000000001 5.428890000000001 -5.42888 4.354570000000001 -5.42888 3.0293300000000007 z" stroke-linecap="round" />
+                            <path transform="matrix(3.03 0 0 3.06 428.34 60.4)" style="stroke: rgb(75,97,97); fill: rgb(76,135,68); fill-rule: nonzero;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M -5.42888 -2.99011 C -5.42888 -4.337 -4.326630000000001 -5.4288799999999995 -2.9669400000000006 -5.4288799999999995 L 2.9669399999999997 -5.4288799999999995 L 2.9669399999999997 -5.4288799999999995 C 4.32663 -5.4288799999999995 5.4288799999999995 -4.337009999999999 5.4288799999999995 -2.9901099999999996 L 5.4288799999999995 2.99012 L 5.4288799999999995 2.99012 C 5.4288799999999995 4.33701 4.32663 5.42889 2.9669399999999997 5.42889 L -2.9669400000000006 5.42889 L -2.9669400000000006 5.42889 C -4.326630000000001 5.42889 -5.42888 4.33702 -5.42888 2.99012 z" stroke-linecap="round" />
+                            <path transform="matrix(4.95 0 0 4.95 394.28 60.87)" style="stroke: rgb(207,1,102); fill: rgb(234,234,234); fill-rule: nonzero;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M 0 -2.76873 C 1.52834 -2.76873 2.76873 -1.52834 2.76873 0 C 2.76873 1.52834 1.52834 2.76873 0 2.76873 C -1.52834 2.76873 -2.76873 1.52834 -2.76873 0 C -2.76873 -1.52834 -1.52834 -2.76873 0 -2.76873 z" stroke-linecap="round" />
+                            <path transform="matrix(4.95 0 0 4.95 428.34 95.08)" style="stroke: rgb(207,1,102); fill: rgb(234,234,234); fill-rule: nonzero;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M 0 -2.76873 C 1.52834 -2.76873 2.76873 -1.52834 2.76873 0 C 2.76873 1.52834 1.52834 2.76873 0 2.76873 C -1.52834 2.76873 -2.76873 1.52834 -2.76873 0 C -2.76873 -1.52834 -1.52834 -2.76873 0 -2.76873 z" stroke-linecap="round" />
+                            <path transform="matrix(4.95 0 0 4.95 428.34 60.4)" style="stroke: rgb(207,1,102); fill: rgb(47,47,47); fill-rule: nonzero;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M 0 -2.76873 C 1.52834 -2.76873 2.76873 -1.52834 2.76873 0 C 2.76873 1.52834 1.52834 2.76873 0 2.76873 C -1.52834 2.76873 -2.76873 1.52834 -2.76873 0 C -2.76873 -1.52834 -1.52834 -2.76873 0 -2.76873 z" stroke-linecap="round" />
+                            <path transform="matrix(4.95 0 0 4.95 394.28 94.41)" style="stroke: rgb(207,1,102); fill: rgb(47,47,47); fill-rule: nonzero;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M 0 -2.76873 C 1.52834 -2.76873 2.76873 -1.52834 2.76873 0 C 2.76873 1.52834 1.52834 2.76873 0 2.76873 C -1.52834 2.76873 -2.76873 1.52834 -2.76873 0 C -2.76873 -1.52834 -1.52834 -2.76873 0 -2.76873 z" stroke-linecap="round" />
+                        </g>
+                    </svg>
+                </div>
+                <p id = "start-text" left = 300 top = 450 
+                onselectstart="return false;">
+                <strong>画面をクリックしてください</strong>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            </p>
+
+            </div>
+
+            <div id ="select-window" top = 850 onselectstart="return false;" style="
+                position: relative;opacity: 1;width: 100%;height: 100%;">
+                <input id = "NameBox" type="text" maxlength="10" placeholder = "名前(10文字まで)" left = 340 top = 1>
+                <div id = "exit" onclick="Click(this)" left = 800 top = 5>退出</div>
+                <div id="select-room1" class = "select-room" top = 100 left = 140 onclick="Click(this)" onmouseover = "MouseOver(this)" onmouseleave ="MouseLeave(this)">
+                    <div class = "decora" left = 185 top = 5></div>
+                    <p top = 30 left = 150 style="pointer-events: none">ルーム1</p>
+                    <p top = 100 left = 140 class="select-table" style="pointer-events: none">状態 :0/2</p>
+                </div>
+                <div id="select-room2" class = "select-room" top = 100 left = 660 onclick="Click(this)" onmouseover = "MouseOver(this)" onmouseleave ="MouseLeave(this)">
+                    <div class = "decora" left = 185 top = 5></div>
+                    <p top = 30 left = 150 style="pointer-events: none">ルーム2</p>
+                    <p top = 100 left = 140 class="select-table" style="pointer-events: none">状態 :0/2</p>
+                </div>
+                <div id="select-room3" class = "select-room" top = 450 left = 140 onclick="Click(this)" onmouseover = "MouseOver(this)" onmouseleave ="MouseLeave(this)">
+                    <div class = "decora" left = 185 top = 5></div>
+                    <p top = 30 left = 150  style="pointer-events: none">ルーム3</p>
+                    <p top = 100 left = 140 class="select-table" style="pointer-events: none">状態 :0/2</p>
+                </div>
+                <div id="select-room4" class = "select-room" top = 450 left = 660 onclick="Click(this)" onmouseover = "MouseOver(this)" onmouseleave ="MouseLeave(this)">
+                    <div class = "decora" left = 185 top = 5> </div>
+                    <p top = 30 left = 150 style="pointer-events: none">ルーム4</p>
+                    <p top = 100 left = 140 class="select-table" style="pointer-events: none">状態 :0/2</p>
+                </div>
+            </div>
+
+            <div id = "board-window" top = 0 left = 55>
+                <div class="Tile" top = 60 left = 80 y = 0 style="display:flex;">
+                    <div class = "tile" x="0">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="1">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="2">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="3">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="4">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="5">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="6">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="7">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                </div>
+                <div class="Tile" top = 140 left = 80 y = 1 style="display:flex;">
+                    <div class = "tile" x="0">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="1">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="2">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="3">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="4">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="5">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="6">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="7">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                </div>
+                <div class="Tile" top = 220 left = 80 y = 2 style="display:flex;">
+                    <div class = "tile" x="0">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="1">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="2">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="3">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="4">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="5">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="6">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="7">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                </div>
+                <div class="Tile" top = 300 left = 80 y = 3 style="display:flex;">
+                    <div class = "tile" x="0">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="1">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="2">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="3">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="4">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="5">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="6">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="7">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                </div>
+                <div class="Tile" top = 380 left = 80 y = 4 style="display:flex;">
+                    <div class = "tile" x="0">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="1">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="2">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="3">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="4">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="5">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="6">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="7">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                </div>
+                <div class="Tile" top = 460 left = 80 y = 5 style="display:flex;">
+                    <div class = "tile" x="0">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="1">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="2">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="3">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="4">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="5">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="6">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="7">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                </div>
+                <div class="Tile" top = 540 left = 80 y = 6 style="display:flex;">
+                    <div class = "tile" x="0">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="1">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="2">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="3">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="4">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="5">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="6">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="7">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                </div>
+                <div class="Tile" top = 620 left = 80 y = 7 style="display:flex;">
+                    <div class = "tile" x="0">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="1">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="2">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="3">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="4">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="5">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="6">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                    <div class = "tile" x="7">
+                        <div class = "StoneDiv" onclick="Click(this)">
+                            <div class="Stone" top = 10 left = 10 color = "white" style="background-color: rgb(255, 255, 255);backface-visibility: visible;"></div>
+                            <div class="Stone" top = 10 left = 10 color = "black" style="background-color: rgb(0, 0, 0);backface-visibility: hidden;"></div>
+                        </div>
+                        <div class="CanPlace"></div>
+                    </div>
+                </div>
+                <div id ="janken-board" top = 550 left = 775>
+                    <img class = "janken" janken = 1 onclick="Click(this)" src="./img/janken_gu.png">
+                    <img class = "janken" janken = 2 onclick="Click(this)" src="./img/janken_choki.png">
+                    <img class = "janken" janken = 3 onclick="Click(this)" src="./img/janken_pa.png">
+                </div>
+                <img class = "janken-result" top = 25 left = 300 src = "">
+                <img class = "janken-result" top = 495 left = 300 src = "">
+                <p class = "janken-result" top = 250 left = 300></p>
+            </div>
+        </div>
+
+        <script src ="./js/anime.min.js"></script>
+        <script src = "./js/main.js"></script>
+    </body>
+
+    <footer>
+
+    </footer>
+
+</html>
